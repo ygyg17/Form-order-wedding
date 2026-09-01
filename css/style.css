@@ -342,6 +342,12 @@ textarea.is-invalid {
   justify-content: center;
   z-index: 50;
 }
+/* Class-based hide, deliberately NOT relying on the [hidden]
+   attribute — an explicit class can't be silently overridden
+   by another rule with equal specificity later in the file. */
+.modal.is-hidden {
+  display: none;
+}
 .modal__box {
   background: var(--color-surface);
   border-radius: var(--radius);
