@@ -24,6 +24,14 @@
 
 * { box-sizing: border-box; }
 
+/* Elemen manapun yang diberi atribut `hidden` lewat JS (mis. modal, loading
+   overlay) HARUS benar-benar tersembunyi. Tanpa baris ini, aturan
+   `display: flex` pada .modal / .loading-overlay di bawah akan selalu
+   menang melawan gaya bawaan browser untuk [hidden], karena author
+   stylesheet selalu diprioritaskan di atas user-agent stylesheet — jadi
+   elemen tetap tampil walau `.hidden = true` sudah diset dari JS. */
+[hidden] { display: none !important; }
+
 html { -webkit-text-size-adjust: 100%; }
 
 body {
