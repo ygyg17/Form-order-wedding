@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Status Pesanan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="page" style="text-align:center; padding-top:96px;">
+  <p class="page-header__eyebrow">Undangan Digital</p>
+  <h1 class="page-header__title" id="resultTitle">Memeriksa status pesanan...</h1>
+  <p class="panel__hint" id="resultDesc">Mohon tunggu sebentar.</p>
+  <p class="panel__hint">Nomor pesanan: <strong id="orderIdText">-</strong></p>
+  <a class="btn btn--primary" style="display:inline-block; text-decoration:none; margin-top:16px;" href="index.html">Kembali ke Beranda</a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabaseClient.js"></script>
+<script>
+  (async function () {
+    const params = new URLSearchParams(window.location.search);
+    const orderId = params.get("order_id");
+    document.getElementById("orderIdText").textContent = orderId || "-";
+
+    if (!orderId) return;
+
+    try {
+      // Status final SELALU divalidasi lewat backend (Edge Function),
+      // BUKAN diambil mentah-mentah dari parameter URL yang bisa
+      // dimanipulasi siapa saja.
+      const { data, error } = await supabaseClient.functions.invoke("check-status", {
+        body: { order_id: orderId }
+      });
+
+      if (error || !data) throw new Error();
+
+      const titleEl = document.getElementById("resultTitle");
+      const descEl = document.getElementById("resultDesc");
+
+      if (data.status === "paid") {
+        titleEl.textContent = "Pembayaran berhasil";
+        descEl.textContent = "Tim kami akan segera memproses undangan digital Anda.";
+      } else if (data.status === "pending_payment") {
+        titleEl.textContent = "Menunggu pembayaran";
+        descEl.textContent = "Selesaikan pembayaran untuk melanjutkan proses pemesanan.";
+      } else {
+        titleEl.textContent = "Pembayaran belum berhasil";
+        descEl.textContent = "Silakan coba lakukan pemesanan kembali.";
+      }
+    } catch {
+      document.getElementById("resultTitle").textContent = "Status tidak dapat dimuat";
+      document.getElementById("resultDesc").textContent = "Silakan hubungi admin dengan menyertakan nomor pesanan di atas.";
+    }
+  })();
+</script>
+</body>
+</html>

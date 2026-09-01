@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pesan Undangan Digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="page">
+
+  <header class="page-header">
+    <p class="page-header__eyebrow">Undangan Digital</p>
+    <h1 class="page-header__title">Pesan undangan pernikahan Anda</h1>
+  </header>
+
+  <!-- Step indicator -->
+  <ol class="steps" id="stepIndicator">
+    <li class="steps__item is-active" data-step="1"><span class="steps__num">1</span><span class="steps__label">Data Pemesan</span></li>
+    <li class="steps__item" data-step="2"><span class="steps__num">2</span><span class="steps__label">Template</span></li>
+    <li class="steps__item" data-step="3"><span class="steps__num">3</span><span class="steps__label">Mempelai</span></li>
+    <li class="steps__item" data-step="4"><span class="steps__num">4</span><span class="steps__label">Detail Acara</span></li>
+  </ol>
+
+  <form id="orderForm" novalidate>
+
+    <!-- STEP 1 -->
+    <section class="panel is-active" data-panel="1" aria-labelledby="panel1title">
+      <h2 id="panel1title" class="panel__title">Data Pemesan</h2>
+      <p class="panel__hint">Data ini digunakan untuk konfirmasi pesanan &amp; pengiriman tautan undangan.</p>
+
+      <div class="field">
+        <label for="ordererName">Nama Pemesan</label>
+        <input type="text" id="ordererName" name="ordererName" maxlength="100" autocomplete="name" required>
+        <span class="field__error" data-error-for="ordererName"></span>
+      </div>
+
+      <div class="field">
+        <label for="ordererWhatsapp">Nomor WhatsApp</label>
+        <input type="tel" id="ordererWhatsapp" name="ordererWhatsapp" placeholder="08xxxxxxxxxx" maxlength="16" autocomplete="tel" required>
+        <span class="field__hint">Format: 08xxxxxxxxxx atau +62xxxxxxxxxx</span>
+        <span class="field__error" data-error-for="ordererWhatsapp"></span>
+      </div>
+
+      <div class="field">
+        <label for="ordererEmail">Email</label>
+        <input type="email" id="ordererEmail" name="ordererEmail" maxlength="150" autocomplete="email" required>
+        <span class="field__error" data-error-for="ordererEmail"></span>
+      </div>
+    </section>
+
+    <!-- STEP 2 -->
+    <section class="panel" data-panel="2" aria-labelledby="panel2title">
+      <h2 id="panel2title" class="panel__title">Pilih Template</h2>
+      <p class="panel__hint">Pilih satu desain undangan. Harga menyesuaikan template yang dipilih.</p>
+
+      <div class="template-grid" id="templateGrid" role="radiogroup" aria-label="Pilihan template undangan"></div>
+      <span class="field__error" data-error-for="templateId"></span>
+    </section>
+
+    <!-- STEP 3 -->
+    <section class="panel" data-panel="3" aria-labelledby="panel3title">
+      <h2 id="panel3title" class="panel__title">Data Mempelai</h2>
+
+      <fieldset class="fieldset">
+        <legend>Mempelai Pria</legend>
+
+        <div class="field">
+          <label for="groomFullName">Nama Lengkap</label>
+          <input type="text" id="groomFullName" name="groomFullName" maxlength="100" required>
+          <span class="field__error" data-error-for="groomFullName"></span>
+        </div>
+        <div class="field">
+          <label for="groomNickname">Nama Panggilan</label>
+          <input type="text" id="groomNickname" name="groomNickname" maxlength="50" required>
+          <span class="field__error" data-error-for="groomNickname"></span>
+        </div>
+        <div class="field">
+          <label for="groomParents">Nama Orang Tua</label>
+          <input type="text" id="groomParents" name="groomParents" maxlength="150" required>
+          <span class="field__error" data-error-for="groomParents"></span>
+        </div>
+        <div class="field">
+          <label for="groomAddress">Alamat</label>
+          <textarea id="groomAddress" name="groomAddress" rows="2" maxlength="300" required></textarea>
+          <span class="field__error" data-error-for="groomAddress"></span>
+        </div>
+      </fieldset>
+
+      <fieldset class="fieldset">
+        <legend>Mempelai Wanita</legend>
+
+        <div class="field">
+          <label for="brideFullName">Nama Lengkap</label>
+          <input type="text" id="brideFullName" name="brideFullName" maxlength="100" required>
+          <span class="field__error" data-error-for="brideFullName"></span>
+        </div>
+        <div class="field">
+          <label for="brideNickname">Nama Panggilan</label>
+          <input type="text" id="brideNickname" name="brideNickname" maxlength="50" required>
+          <span class="field__error" data-error-for="brideNickname"></span>
+        </div>
+        <div class="field">
+          <label for="brideParents">Nama Orang Tua</label>
+          <input type="text" id="brideParents" name="brideParents" maxlength="150" required>
+          <span class="field__error" data-error-for="brideParents"></span>
+        </div>
+        <div class="field">
+          <label for="brideAddress">Alamat</label>
+          <textarea id="brideAddress" name="brideAddress" rows="2" maxlength="300" required></textarea>
+          <span class="field__error" data-error-for="brideAddress"></span>
+        </div>
+      </fieldset>
+    </section>
+
+    <!-- STEP 4 -->
+    <section class="panel" data-panel="4" aria-labelledby="panel4title">
+      <h2 id="panel4title" class="panel__title">Detail Undangan</h2>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="eventDate">Tanggal Acara</label>
+          <input type="date" id="eventDate" name="eventDate" required>
+          <span class="field__error" data-error-for="eventDate"></span>
+        </div>
+        <div class="field">
+          <label for="eventTime">Waktu Acara</label>
+          <input type="time" id="eventTime" name="eventTime" required>
+          <span class="field__error" data-error-for="eventTime"></span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="eventAddress">Alamat Lokasi</label>
+        <textarea id="eventAddress" name="eventAddress" rows="2" maxlength="300" required></textarea>
+        <span class="field__error" data-error-for="eventAddress"></span>
+      </div>
+
+      <div class="field">
+        <label for="mapsLink">Link Google Maps</label>
+        <input type="url" id="mapsLink" name="mapsLink" placeholder="https://maps.google.com/..." maxlength="500" required>
+        <span class="field__error" data-error-for="mapsLink"></span>
+      </div>
+
+      <div class="field">
+        <label for="backgroundMusic">Background Music</label>
+        <input type="text" id="backgroundMusic" name="backgroundMusic" placeholder="Judul lagu atau link (YouTube/Spotify)" maxlength="300" required>
+        <span class="field__error" data-error-for="backgroundMusic"></span>
+      </div>
+
+      <p class="panel__subtitle">Informasi Rekening</p>
+      <div class="field-row">
+        <div class="field">
+          <label for="bankName">Nama Bank</label>
+          <input type="text" id="bankName" name="bankName" maxlength="50" required>
+          <span class="field__error" data-error-for="bankName"></span>
+        </div>
+        <div class="field">
+          <label for="bankAccountNumber">Nomor Rekening</label>
+          <input type="text" id="bankAccountNumber" name="bankAccountNumber" inputmode="numeric" maxlength="30" required>
+          <span class="field__error" data-error-for="bankAccountNumber"></span>
+        </div>
+      </div>
+      <div class="field">
+        <label for="bankAccountName">Atas Nama</label>
+        <input type="text" id="bankAccountName" name="bankAccountName" maxlength="100" required>
+        <span class="field__error" data-error-for="bankAccountName"></span>
+      </div>
+
+      <div class="field">
+        <label for="notes">Catatan Tambahan <span class="field__optional">(opsional)</span></label>
+        <textarea id="notes" name="notes" rows="3" maxlength="500"></textarea>
+      </div>
+    </section>
+
+    <!-- Order summary shown on last step -->
+    <aside class="summary" id="orderSummary" data-panel-summary="4" hidden>
+      <p class="summary__label">Template dipilih</p>
+      <p class="summary__value" id="summaryTemplateName">-</p>
+      <p class="summary__price" id="summaryTemplatePrice">-</p>
+    </aside>
+
+    <p class="form-error" id="formError" role="alert" hidden></p>
+
+    <div class="actions">
+      <button type="button" class="btn btn--ghost" id="btnPrev" hidden>Kembali</button>
+      <button type="button" class="btn btn--primary" id="btnNext">Lanjut</button>
+      <button type="submit" class="btn btn--primary" id="btnSubmit" hidden>Simpan &amp; Bayar</button>
+    </div>
+  </form>
+
+  <div class="modal" id="loadingModal" hidden>
+    <div class="modal__box">
+      <div class="spinner" aria-hidden="true"></div>
+      <p id="loadingModalText">Memproses pesanan...</p>
+    </div>
+  </div>
+
+  <footer class="page-footer">
+    <p>Pembayaran diproses aman melalui Midtrans.</p>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="MIDTRANS_CLIENT_KEY_PLACEHOLDER" id="midtrans-script"></script>
+<script src="js/config.js"></script>
+<script src="js/supabaseClient.js"></script>
+<script src="js/validation.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

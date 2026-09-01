@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 420">
+<rect width="300" height="420" fill="#FBF6F1"/>
+<line x1="40" y1="120" x2="260" y2="120" stroke="#B5623F" stroke-width="1.5"/>
+<line x1="40" y1="300" x2="260" y2="300" stroke="#B5623F" stroke-width="1.5"/>
+<text x="150" y="205" text-anchor="middle" font-family="Georgia, serif" font-size="20" fill="#7A4530">Anna &amp; Budi</text>
+<text x="150" y="228" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#B5623F">Undangan Pernikahan</text>
+</svg>
