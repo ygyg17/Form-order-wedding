@@ -8,7 +8,7 @@
 
 // Ganti dengan URL Web App Google Apps Script Anda setelah proses deploy.
 // Contoh: "https://script.google.com/macros/s/AKfycb.../exec"
-const APPS_SCRIPT_URL = "PASTE_APPS_SCRIPT_WEB_APP_URL_DI_SINI";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwdo-jYdiuKEJ279bf8pbqTlrFnMt066krX5RWSr7sxnsY4SYoo76aUHfU5agrKpK-n/exec";
 
 // Daftar template undangan.
 // Untuk menambah template baru:
