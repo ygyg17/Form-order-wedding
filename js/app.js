@@ -217,10 +217,10 @@
   // ---------- Loading modal helpers ----------
   function showLoading(text) {
     loadingModalText.textContent = text;
-    loadingModal.hidden = false;
+    loadingModal.classList.remove("is-hidden");
   }
   function hideLoading() {
-    loadingModal.hidden = true;
+    loadingModal.classList.add("is-hidden");
   }
 
   function showFormError(message) {
