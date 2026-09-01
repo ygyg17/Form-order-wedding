@@ -214,13 +214,35 @@
     };
   }
 
+  // Menghasilkan UUID di client sebagai primary key `id`.
+  // Ini WAJIB karena kolom `orders.id` menggunakan
+  // gen_random_uuid() sebagai default, tapi RLS hanya mengizinkan
+  // INSERT untuk anon (tidak ada policy SELECT). Jika kita
+  // mengandalkan .select().single() setelah insert untuk membaca
+  // id yang di-generate server, PostgREST akan mencoba membaca
+  // baris tsb kembali menggunakan RLS SELECT -> ditolak -> insert
+  // dianggap gagal walau data sebenarnya sudah tersimpan.
+  // Dengan generate id di client, kita tidak perlu membaca
+  // apa pun kembali dari server setelah insert.
+  function generateOrderId() {
+    if (window.crypto && typeof window.crypto.randomUUID === "function") {
+      return window.crypto.randomUUID();
+    }
+    // Fallback sederhana untuk browser lama tanpa crypto.randomUUID
+    return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
+      const r = (Math.random() * 16) | 0;
+      const v = c === "x" ? r : (r & 0x3) | 0x8;
+      return v.toString(16);
+    });
+  }
+
   // ---------- Loading modal helpers ----------
   function showLoading(text) {
     loadingModalText.textContent = text;
-    loadingModal.classList.remove("is-hidden");
+    loadingModal.hidden = false;
   }
   function hideLoading() {
-    loadingModal.classList.add("is-hidden");
+    loadingModal.hidden = true;
   }
 
   function showFormError(message) {
@@ -235,22 +257,25 @@
     if (!validateStep(4)) return;
     formError.hidden = true;
 
-    const payload = collectPayload();
+    const orderId = generateOrderId();
+    const payload = { id: orderId, ...collectPayload() };
 
     btnSubmit.disabled = true;
     showLoading("Menyimpan pesanan...");
 
     try {
-      // 1) Simpan order ke Supabase (anon key, dibatasi RLS insert-only)
-      const { data: inserted, error: insertError } = await supabaseClient
+      // 1) Simpan order ke Supabase (anon key, dibatasi RLS insert-only).
+      // TIDAK memakai .select() di sini secara sengaja: anon tidak
+      // punya policy SELECT, jadi PostgREST tidak bisa mengembalikan
+      // baris yang baru dibuat. id sudah kita tentukan sendiri di atas.
+      const { error: insertError } = await supabaseClient
         .from("orders")
-        .insert(payload)
-        .select("id")
-        .single();
+        .insert(payload);
 
-      if (insertError) throw new Error("Gagal menyimpan pesanan. Silakan coba lagi.");
-
-      const orderId = inserted.id;
+      if (insertError) {
+        console.error("Insert error:", insertError);
+        throw new Error("Gagal menyimpan pesanan. Silakan coba lagi.");
+      }
 
       // 2) Minta Snap token dari Edge Function (Server Key TIDAK pernah
       //    ada di frontend, hanya di Edge Function secrets).
