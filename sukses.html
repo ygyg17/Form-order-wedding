@@ -28,9 +28,6 @@
     if (!orderId) return;
 
     try {
-      // Status final SELALU divalidasi lewat backend (Edge Function),
-      // BUKAN diambil mentah-mentah dari parameter URL yang bisa
-      // dimanipulasi siapa saja.
       const { data, error } = await supabaseClient.functions.invoke("check-status", {
         body: { order_id: orderId }
       });
