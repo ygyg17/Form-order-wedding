@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pesan Undangan Digital</title>
+<title>Order Undangan Digital Bali</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
@@ -13,8 +13,8 @@
 <div class="page">
 
   <header class="page-header">
-    <p class="page-header__eyebrow">Undangan Digital</p>
-    <h1 class="page-header__title">Pesan undangan pernikahan Anda</h1>
+    <p class="page-header__eyebrow">Singgah Bali</p>
+    <h1 class="page-header__title">Form Order Pernikahan Undangan Digital</h1>
   </header>
 
   <!-- Step indicator -->
@@ -33,7 +33,7 @@
       <p class="panel__hint">Data ini digunakan untuk konfirmasi pesanan &amp; pengiriman tautan undangan.</p>
 
       <div class="field">
-        <label for="ordererName">Nama Pemesan</label>
+        <label for="ordererName">Nama</label>
         <input type="text" id="ordererName" name="ordererName" maxlength="100" autocomplete="name" required>
         <span class="field__error" data-error-for="ordererName"></span>
       </div>
@@ -55,7 +55,7 @@
     <!-- STEP 2 -->
     <section class="panel" data-panel="2" aria-labelledby="panel2title">
       <h2 id="panel2title" class="panel__title">Pilih Template</h2>
-      <p class="panel__hint">Pilih satu desain undangan. Harga menyesuaikan template yang dipilih.</p>
+      <p class="panel__hint">Pilih satu desain undangan.</p>
 
       <div class="template-grid" id="templateGrid" role="radiogroup" aria-label="Pilihan template undangan"></div>
       <span class="field__error" data-error-for="templateId"></span>
@@ -171,7 +171,7 @@
       </div>
 
       <div class="field">
-        <label for="notes">Catatan Tambahan <span class="field__optional">(opsional)</span></label>
+        <label for="notes">Catatan Tambahan <span class="field__optional">(masukan details tambahan yang perlu dimasukan)</span></label>
         <textarea id="notes" name="notes" rows="3" maxlength="500"></textarea>
       </div>
     </section>
@@ -188,7 +188,7 @@
     <div class="actions">
       <button type="button" class="btn btn--ghost" id="btnPrev" hidden>Kembali</button>
       <button type="button" class="btn btn--primary" id="btnNext">Lanjut</button>
-      <button type="submit" class="btn btn--primary" id="btnSubmit" hidden>Simpan &amp; Bayar</button>
+      <button type="submit" class="btn btn--primary" id="btnSubmit" hidden>Save &amp; Checkout</button>
     </div>
   </form>
 
@@ -200,7 +200,7 @@
   </div>
 
   <footer class="page-footer">
-    <p>Pembayaran diproses aman melalui Midtrans.</p>
+    <p>Data Anda aman dan hanya digunakan untuk keperluan pembuatan website undangan.</p>
   </footer>
 </div>
 
