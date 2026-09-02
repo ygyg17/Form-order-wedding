@@ -19,45 +19,45 @@
 
 const TEMPLATES = [
   {
-    id: "elegant-ivory",
-    name: "Elegant Ivory",
-    image: "images/templates/elegant-ivory.svg",
+    id: "minimalist",
+    name: "Minimalist",
+    image: "images/templates/theme1.webp",
     price: 150000,
-    description: "Nuansa krem lembut dengan tipografi klasik."
+    description: "Nuansa lembut dengan tipografi klasik."
   },
   {
-    id: "modern-mono",
-    name: "Modern Mono",
-    image: "images/templates/modern-mono.svg",
+    id: "the-classic",
+    name: "The Classic",
+    image: "images/templates/theme2.webp",
     price: 150000,
-    description: "Hitam putih, garis tegas, dan minimalis."
+    description: "garis tegas, dan minimalis."
   },
   {
-    id: "sage-garden",
-    name: "Sage Garden",
-    image: "images/templates/sage-garden.svg",
-    price: 175000,
-    description: "Hijau sage dengan sentuhan botanikal sederhana."
+    id: "modern-romance",
+    name: "Modern Romance",
+    image: "images/templates/theme3.webp",
+    price: 150000,
+    description: "Sentuhan kehangatan warna."
   },
   {
-    id: "dusty-rose",
-    name: "Dusty Rose",
-    image: "images/templates/dusty-rose.svg",
-    price: 175000,
-    description: "Palet mauve lembut, cocok untuk tema romantis."
+    id: "the-flower",
+    name: "The Flower",
+    image: "images/templates/theme4.webp",
+    price: 150000,
+    description: "Ornamen Bunga, cocok untuk tema romantis."
   },
   {
-    id: "royal-navy",
-    name: "Royal Navy",
-    image: "images/templates/royal-navy.svg",
-    price: 200000,
-    description: "Navy elegan dengan aksen emas tipis."
+    id: "brown-tone",
+    name: "Brown Tone",
+    image: "images/templates/theme5.webp",
+    price: 150000,
+    description: "Kombinasi Cokelat dan putih."
   },
   {
     id: "terracotta-line",
     name: "Terracotta Line",
     image: "images/templates/terracotta-line.svg",
-    price: 175000,
+    price: 150000,
     description: "Garis-garis halus dengan warna terracotta hangat."
   }
 ];
