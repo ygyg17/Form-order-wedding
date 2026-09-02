@@ -21,35 +21,35 @@ const TEMPLATES = [
   {
     id: "minimalist",
     name: "Minimalist",
-    image: "images/templates/theme1.webp",
+    image: "images/templates/Theme1.webp",
     price: 150000,
     description: "Nuansa lembut dengan tipografi klasik."
   },
   {
     id: "the-classic",
     name: "The Classic",
-    image: "images/templates/theme2.webp",
+    image: "images/templates/Theme2.webp",
     price: 150000,
     description: "garis tegas, dan minimalis."
   },
   {
     id: "modern-romance",
     name: "Modern Romance",
-    image: "images/templates/theme3.webp",
+    image: "images/templates/Theme3.webp",
     price: 150000,
     description: "Sentuhan kehangatan warna."
   },
   {
     id: "the-flower",
     name: "The Flower",
-    image: "images/templates/theme4.webp",
+    image: "images/templates/Theme4.webp",
     price: 150000,
     description: "Ornamen Bunga, cocok untuk tema romantis."
   },
   {
     id: "brown-tone",
     name: "Brown Tone",
-    image: "images/templates/theme5.webp",
+    image: "images/templates/Theme5.webp",
     price: 150000,
     description: "Kombinasi Cokelat dan putih."
   },
